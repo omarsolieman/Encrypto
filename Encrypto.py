@@ -24,23 +24,103 @@ def encryption():
             file = open('key.key', 'wb')
             file.write(keyinp)
             file.close()
-            print("Please make sure you have placed the text that you want to encrypt in 'text.txt' ")
-            print("if content is already present it will be encrypted automatically ")
-            file = open('key.key', 'rb')
-            key = file.read()
-            file.close()
+            txtinput = int(1)
+            txttxt = int(2)
+            print("How would you like to input the key?")
+            print("[1] Input text here")
+            print("[2] Use 'text.txt'")
+            actionencm = int(input(""))
+            if actionencm == txtinput:
+                txtinp = input("").encode()
+                file = open('text.txt', 'wb')
+                file.write(txtinp)
+                file.close()
+                file = open('key.key', 'rb')
+                key = file.read()
+                file.close()
 
-            with open('text.txt', 'rb') as f:
-                data = f.read()
+                with open('text.txt', 'rb') as f:
+                    data = f.read()
 
-            fernet = Fernet(key)
-            encrypted = fernet.encrypt(data)
+                fernet = Fernet(key)
+                encrypted = fernet.encrypt(data)
 
-            with open('text.txt.encrypted', 'wb') as f:
-                f.write(encrypted)
+                with open('text.txt.encrypted', 'wb') as f:
+                    f.write(encrypted)
 
+                print("encrypted")
+
+            elif actionencm == txttxt:
+                print("Please make sure you have placed the text that you want to encrypt in 'text.txt' ")
+                print("if content is already present it will be encrypted automatically ")
+                file = open('key.key', 'rb')
+                key = file.read()
+                file.close()
+
+                with open('text.txt', 'rb') as f:
+                    data = f.read()
+
+                fernet = Fernet(key)
+                encrypted = fernet.encrypt(data)
+
+                with open('text.txt.encrypted', 'wb') as f:
+                    f.write(encrypted)
+
+                print("encrypted")
+
+            else:
+                print("I'm Sorry that doesn't seem like a valid action")
+                choices()
             choices()
         elif actionenc == txt:
+            txtinput = int(1)
+            txttxt = int(2)
+            print("How would you like to input the key?")
+            print("[1] Input text here")
+            print("[2] Use 'text.txt'")
+            actionencm = int(input(""))
+            if actionencm == txtinput:
+                txtinp = input("").encode()
+                file = open('text.txt', 'wb')
+                file.write(txtinp)
+                file.close()
+                file = open('key.key', 'rb')
+                key = file.read()
+                file.close()
+
+                with open('text.txt', 'rb') as f:
+                    data = f.read()
+
+                fernet = Fernet(key)
+                encrypted = fernet.encrypt(data)
+
+                with open('text.txt.encrypted', 'wb') as f:
+                    f.write(encrypted)
+
+                print("encrypted")
+
+            elif actionencm == txttxt:
+                print("Please make sure you have placed the text that you want to encrypt in 'text.txt' ")
+                print("if content is already present it will be encrypted automatically ")
+                file = open('key.key', 'rb')
+                key = file.read()
+                file.close()
+
+                with open('text.txt', 'rb') as f:
+                    data = f.read()
+
+                fernet = Fernet(key)
+                encrypted = fernet.encrypt(data)
+
+                with open('text.txt.encrypted', 'wb') as f:
+                    f.write(encrypted)
+
+                print("encrypted")
+
+            else:
+                print("I'm Sorry that doesn't seem like a valid action")
+                choices()
+            choices()
             print("Please make sure you have placed the text that you want to encrypt in 'text.txt' ")
             print("if content is already present it will be encrypted automatically ")
             file = open('key.key', 'rb')
@@ -55,6 +135,9 @@ def encryption():
 
             with open('text.txt.encrypted', 'wb') as f:
                 f.write(encrypted)
+
+            print("encrypted")
+            
             choices()
         else:
             print("I'm Sorry that doesn't seem like a valid action")
