@@ -14,3 +14,6 @@
 
 # Version 1.04
  added choice to input key directly from shell or use "key.key"
+
+# Version 1.05
+ added choice to input text to be encrypted directly from the shell
