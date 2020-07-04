@@ -12,38 +12,101 @@ print("Hello I am Encrypto your all in one encryption and decryption companion")
 
 
 def encryption():
-    print("Please make sure you have placed the text that you want to encrypt in 'text.txt' ")
-    print("if content is already present it will be encrypted automatically ")
-    file = open('key.key', 'rb')
-    key = file.read()
-    file.close()
+    while True:
+        keyinput = int(1)
+        txt = int(2)
+        print("How would you like to input the key?")
+        print("[1] Input key here")
+        print("[2] Use 'key.key'")
+        actionenc = int(input(""))
+        if actionenc == keyinput:
+            keyinp = input("").encode()
+            file = open('key.key', 'wb')
+            file.write(keyinp)
+            file.close()
+            print("Please make sure you have placed the text that you want to encrypt in 'text.txt' ")
+            print("if content is already present it will be encrypted automatically ")
+            file = open('key.key', 'rb')
+            key = file.read()
+            file.close()
 
-    with open('text.txt', 'rb') as f:
-        data = f.read()
+            with open('text.txt', 'rb') as f:
+                data = f.read()
 
-    fernet = Fernet(key)
-    encrypted = fernet.encrypt(data)
+            fernet = Fernet(key)
+            encrypted = fernet.encrypt(data)
 
-    with open('text.txt.encrypted', 'wb') as f:
-        f.write(encrypted)
+            with open('text.txt.encrypted', 'wb') as f:
+                f.write(encrypted)
+
+            choices()
+        elif actionenc == txt:
+            print("Please make sure you have placed the text that you want to encrypt in 'text.txt' ")
+            print("if content is already present it will be encrypted automatically ")
+            file = open('key.key', 'rb')
+            key = file.read()
+            file.close()
+
+            with open('text.txt', 'rb') as f:
+                data = f.read()
+
+            fernet = Fernet(key)
+            encrypted = fernet.encrypt(data)
+
+            with open('text.txt.encrypted', 'wb') as f:
+                f.write(encrypted)
+            choices()
+        else:
+            print("I'm Sorry that doesn't seem like a valid action")
+            choices()
 
 
 def decryption():
-    print("Please place key in 'key.key' (No action is needed if Encrypto has been used to encrypt the content too)")
-    print("Decrypting....")
-    print("Decrypted Content will be in the file 'text.txt.decrypted' ")
-    file = open('key.key', 'rb')
-    key = file.read()
-    file.close()
+    keyinput = int(1)
+    txt = int(2)
+    print("How would you like to input the key?")
+    print("[1] Input key here")
+    print("[2] Use 'key.key'")
+    actionenc = int(input(""))
+    if actionenc == keyinput:
+        keyinp = input("").encode()
+        file = open('key.key', 'wb')
+        file.write(keyinp)
+        file.close()
+        print("Decrypting....")
+        print("Decrypted Content will be in the file 'text.txt.decrypted' ")
+        file = open('key.key', 'rb')
+        key = file.read()
+        file.close()
 
-    with open('text.txt.encrypted', 'rb') as f:
-        data = f.read()
+        with open('text.txt.encrypted', 'rb') as f:
+            data = f.read()
 
-    fernet = Fernet(key)
-    decrypted = fernet.decrypt(data)
+        fernet = Fernet(key)
+        decrypted = fernet.decrypt(data)
 
-    with open('text.txt.decrypted', 'wb') as f:
-        f.write(decrypted)
+        with open('text.txt.decrypted', 'wb') as f:
+            f.write(decrypted)
+    elif actionenc == txt:
+        print(
+            "Please place key in 'key.key' (No action is needed if Encrypto has been used to encrypt the content too)")
+        print("Decrypting....")
+        print("Decrypted Content will be in the file 'text.txt.decrypted' ")
+        file = open('key.key', 'rb')
+        key = file.read()
+        file.close()
+
+        with open('text.txt.encrypted', 'rb') as f:
+            data = f.read()
+
+        fernet = Fernet(key)
+        decrypted = fernet.decrypt(data)
+
+        with open('text.txt.decrypted', 'wb') as f:
+            f.write(decrypted)
+    else:
+        print("I'm Sorry that doesn't seem like a valid action")
+        choices()
 
 
 def keygeneration():
@@ -57,10 +120,36 @@ def keygeneration():
     file.close()
 
 
-keyGenerate = int(1)
-decryptString = int(2)
-encryptString = int(3)
-Help = int(4)
+def choices():
+    keygenerate = int(1)
+    decryptstring = int(2)
+    encryptstring = int(3)
+    helpm = int(4)
+
+    while True:
+        print("What should i do?")
+        print("[1]Generate key")
+        print("[2]Encrypt")
+        print("[3]Decrypt")
+        print("[4]Help")
+        action = int(input(""))
+        if action == keygenerate:
+            keygeneration()
+        elif action == decryptstring:
+            encryption()
+        elif action == encryptstring:
+            decryption()
+        elif action == helpm:
+            print("This Section is still under development")
+            print("Please Keep in mind that this app is still in beta stage")
+        else:
+            print("I'm Sorry that doesn't seem like a valid action")
+
+
+keygenerate = int(1)
+decryptstring = int(2)
+encryptstring = int(3)
+helpm = int(4)
 
 while True:
     print("What should i do?")
@@ -69,13 +158,13 @@ while True:
     print("[3]Decrypt")
     print("[4]Help")
     action = int(input(""))
-    if action == keyGenerate:
+    if action == keygenerate:
         keygeneration()
-    elif action == decryptString:
+    elif action == decryptstring:
         encryption()
-    elif action == encryptString:
+    elif action == encryptstring:
         decryption()
-    elif action == Help:
+    elif action == helpm:
         print("This Section is still under development")
         print("Please Keep in mind that this app is still in beta stage")
     else:
