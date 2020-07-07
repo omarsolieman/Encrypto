@@ -137,7 +137,7 @@ def encryption():
                 f.write(encrypted)
 
             print("encrypted")
-            
+
             choices()
         else:
             print("I'm Sorry that doesn't seem like a valid action")
@@ -156,37 +156,121 @@ def decryption():
         file = open('key.key', 'wb')
         file.write(keyinp)
         file.close()
-        print("Decrypting....")
-        print("Decrypted Content will be in the file 'text.txt.decrypted' ")
-        file = open('key.key', 'rb')
-        key = file.read()
-        file.close()
+        textinput = int(1)
+        textdec = int(2)
+        print("How would you like to input the content?")
+        print("[1] Input encrypted text here")
+        print("[2] Use 'text.txt.encrypted'")
+        actionencm = int(input(""))
+        if actionencm == textinput:
+            textinp = input("").encode()
+            file = open('text.txt.decrypted', 'wb')
+            file.write(textinp)
+            file.close()
+            file = open('key.key', 'rb')
+            key = file.read()
+            file.close()
 
-        with open('text.txt.encrypted', 'rb') as f:
-            data = f.read()
+            with open('text.txt.encrypted', 'rb') as f:
+                data = f.read()
 
-        fernet = Fernet(key)
-        decrypted = fernet.decrypt(data)
+            fernet = Fernet(key)
+            decrypted = fernet.decrypt(data)
 
-        with open('text.txt.decrypted', 'wb') as f:
-            f.write(decrypted)
+            with open('text.txt.decrypted', 'wb') as f:
+                f.write(decrypted)
+
+            print("Decrypting....")
+            print("Decrypted Content will be in the file 'text.txt.decrypted' ")
+
+        elif actionencm == textdec:
+            print("Please make sure you have placed the text that you want to decrypt in 'text.txt.decrypted' ")
+            print("if content is already present it will be decrypted automatically ")
+            file = open('key.key', 'rb')
+            key = file.read()
+            file.close()
+            print("Please place key in 'key.key' (No action is needed if Encrypto has been used to encrypt the "
+                  "content too)")
+            file = open('key.key', 'rb')
+            key = file.read()
+            file.close()
+            with open('text.txt.encrypted', 'rb') as f:
+                data = f.read()
+
+            fernet = Fernet(key)
+            decrypted = fernet.decrypt(data)
+
+            with open('text.txt.decrypted', 'wb') as f:
+                f.write(decrypted)
+
+            print("Decrypting....")
+            print("Decrypted Content will be in the file 'text.txt.decrypted' ")
+
+        else:
+            print("I'm Sorry that doesn't seem like a valid action")
+            choices()
+
     elif actionenc == txt:
-        print(
-            "Please place key in 'key.key' (No action is needed if Encrypto has been used to encrypt the content too)")
-        print("Decrypting....")
-        print("Decrypted Content will be in the file 'text.txt.decrypted' ")
+        print("Please place key in 'key.key' "
+              "(No action is needed if Encrypto has been used to encrypt the content too)")
         file = open('key.key', 'rb')
         key = file.read()
         file.close()
+        textinput = int(1)
+        textdec = int(2)
+        print("How would you like to input the content?")
+        print("[1] Input encrypted text here")
+        print("[2] Use 'text.txt.encrypted'")
+        actionencm = int(input(""))
+        if actionencm == textinput:
+            textinp = input("").encode()
+            file = open('text.txt.decrypted', 'wb')
+            file.write(textinp)
+            file.close()
+            file = open('key.key', 'rb')
+            key = file.read()
+            file.close()
 
-        with open('text.txt.encrypted', 'rb') as f:
-            data = f.read()
+            with open('text.txt.encrypted', 'rb') as f:
+                data = f.read()
 
-        fernet = Fernet(key)
-        decrypted = fernet.decrypt(data)
+            fernet = Fernet(key)
+            decrypted = fernet.decrypt(data)
 
-        with open('text.txt.decrypted', 'wb') as f:
-            f.write(decrypted)
+            with open('text.txt.decrypted', 'wb') as f:
+                f.write(decrypted)
+
+            print("Decrypting....")
+            print("Decrypted Content will be in the file 'text.txt.decrypted' ")
+
+        elif actionencm == textdec:
+            print("Please make sure you have placed the text that you want to decrypt in 'text.txt.encrypted' ")
+            print("if content is already present it will be decrypted automatically ")
+            file = open('key.key', 'rb')
+            key = file.read()
+            file.close()
+            print("Please place key in 'key.key' (No action is needed if Encrypto has been used to encrypt the "
+                  "content too)")
+            file = open('key.key', 'rb')
+            key = file.read()
+            file.close()
+            with open('text.txt.encrypted', 'rb') as f:
+                data = f.read()
+
+            fernet = Fernet(key)
+            decrypted = fernet.decrypt(data)
+
+            with open('text.txt.decrypted', 'wb') as f:
+                f.write(decrypted)
+
+            print("Decrypting....")
+            print("Decrypted Content will be in the file 'text.txt.decrypted' ")
+
+        else:
+            print("I'm Sorry that doesn't seem like a valid action")
+            choices()
+
+
     else:
         print("I'm Sorry that doesn't seem like a valid action")
         choices()
